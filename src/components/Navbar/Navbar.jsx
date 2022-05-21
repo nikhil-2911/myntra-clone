@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
+import { useDispatch } from "react-redux";
 
 // Images
 import Logo from "../../utils/images/logo.jpg";
@@ -7,8 +8,18 @@ import ProfileIcon from "../../utils/images/profile-icon.svg";
 import HeartIcon from "../../utils/images/heart-icon.svg";
 import BagIcon from "../../utils/images/bag-icon.svg";
 import SearchIcon from "../../utils/images/icon-search.svg";
+import { searchByInput } from "../../store/filterSlice";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const [search, setSearch] = useState("");
+  const onChangeHandler = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+  };
+  useEffect(() => {
+    dispatch(searchByInput(search));
+  }, [search]);
   return (
     <nav id="navbar">
       <div className="logoDiv">
@@ -41,6 +52,8 @@ const Navbar = () => {
         <input
           className="searchInput"
           placeholder="Search for products, brands and more"
+          value={search}
+          onChange={(e) => onChangeHandler(e)}
         />
       </div>
       <div id="features">

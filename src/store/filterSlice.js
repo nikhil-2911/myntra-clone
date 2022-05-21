@@ -176,6 +176,34 @@ const filterSlice = createSlice({
         );
       });
     },
+    searchByInput: (state, action) => {
+      if (action.payload === "") {
+        state.products = state.products;
+      } else {
+        const words = action.payload.toLowerCase().split(" ");
+        let products;
+        if (state.men) {
+          products = [...MenData.products];
+        } else {
+          products = [...WomenData.products];
+        }
+        const resultProducts = [];
+        products.forEach((product) => {
+          const input = product.productName.toLocaleLowerCase();
+          let count = 0;
+          words.forEach((word) => {
+            const regex = new RegExp(word, "g");
+            const response = input.match(regex);
+            count =
+              response !== null && response.length >= 1 ? count + 1 : count;
+          });
+          if (count === words.length) {
+            resultProducts.push(product);
+          }
+        });
+        state.products = resultProducts;
+      }
+    },
   },
 });
 export const {
@@ -193,5 +221,6 @@ export const {
   sortByCustomerRating,
   sortByDecreasingOrder,
   sortByIncreasingOrder,
+  searchByInput,
 } = filterSlice.actions;
 export default filterSlice.reducer;

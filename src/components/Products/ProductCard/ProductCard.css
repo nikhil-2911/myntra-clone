@@ -3,6 +3,10 @@
   position: relative;
   margin: 27px;
 }
+#productCard:hover {
+  box-shadow: 0 4px 18px 6px rgb(39 43 57 / 8%);
+  cursor: pointer;
+}
 .profilePhoto {
   width: 210px;
 }
@@ -10,7 +14,7 @@
   padding: 2px 6px;
 }
 .brandText {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   margin-top: 4px;
   margin-bottom: 0px;
@@ -19,6 +23,7 @@
   font-size: 14px;
   font-weight: 280;
   margin-top: 5px;
+  margin-bottom: 6px;
 }
 .productPrice {
   font-size: 15px;
@@ -34,4 +39,31 @@
   font-size: 14px;
   font-weight: 400;
   margin-left: 8px;
+}
+.wishlist {
+  display: flex;
+  border: 1px solid gainsboro;
+  padding: 1px 8px;
+  justify-content: center;
+  margin-left: 0px;
+}
+.heartIcon {
+  width: 18px;
+}
+.wishlistText {
+  margin: 4px 0px;
+  margin-left: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.sizesRow {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 4px;
+  margin-bottom: 2px;
+}
+.sizeSpan {
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: 300;
 }
