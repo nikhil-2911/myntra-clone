@@ -1,0 +1,39 @@
+#productCard {
+  width: 210px;
+  position: relative;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 30px;
+}
+.profilePhoto {
+  width: 210px;
+}
+#productDetails {
+  padding: 2px 6px;
+}
+.brandText {
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 4px;
+  margin-bottom: 0px;
+}
+.infoText {
+  font-size: 14px;
+  font-weight: 280;
+  margin-top: 5px;
+}
+.productPrice {
+  font-size: 15px;
+  font-weight: 500;
+}
+.productMrp {
+  font-size: 13px;
+  font-weight: 280;
+  margin-left: 5px;
+}
+.productDiscount {
+  color: #ff905a;
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 8px;
+}
