@@ -1,9 +1,7 @@
 #productCard {
   width: 210px;
   position: relative;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 30px;
+  margin: 27px;
 }
 .profilePhoto {
   width: 210px;

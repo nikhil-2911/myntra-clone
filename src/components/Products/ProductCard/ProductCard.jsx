@@ -2,7 +2,7 @@ import React from "react";
 import "./ProductCard.css";
 
 const ProductCard = ({ product }) => {
-  console.log(product);
+  // console.log(product);
   return (
     <div id="productCard">
       <img className="profilePhoto" src={product.images[0].src} alt="#photo" />
