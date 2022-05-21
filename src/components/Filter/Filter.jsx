@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterProducts } from "../../store/filterSlice";
+import {
+  filterProducts,
+  addBrandValue,
+  removeBrandValue,
+  addPriceValue,
+  removePriceValue,
+  addColorValue,
+  removeColorValue,
+  addFilters,
+  clearFilters,
+} from "../../store/filterSlice";
 import "./Filter.css";
 
 const Filter = () => {
   const dispatch = useDispatch();
+  const filterState = useSelector((state) => state.product.filterQuery);
   const brandFilters = useSelector((state) => {
     return state.product.filters.filter((brand) => brand.id === "Brand");
   });
@@ -26,15 +37,23 @@ const Filter = () => {
     setValue(e.target.value);
   };
 
-  const handleBrandFilter = (e) => {
+  const clearAllFilters = (e) => {
     e.preventDefault();
+    dispatch(clearFilters());
+    window.location.reload();
   };
+
+  useEffect(() => {
+    dispatch(addFilters());
+  }, [filterState]);
 
   return (
     <div id="filterDiv">
       <div id="filterHead">
         <p className="filterText">FILTERS</p>
-        <button className="filterBtn">CLEAR ALL</button>
+        <button onClick={(e) => clearAllFilters(e)} className="filterBtn">
+          CLEAR ALL
+        </button>
       </div>
       <div id="filter">
         <div id="genderFilters">
@@ -74,7 +93,13 @@ const Filter = () => {
                     id={brand.id}
                     type="checkbox"
                     value={brand.value}
-                    onClick={(e) => handleBrandFilter(e)}
+                    onClick={(e) => {
+                      if (e.target.checked) {
+                        dispatch(addBrandValue(brand.value));
+                      } else {
+                        dispatch(removeBrandValue(brand.value));
+                      }
+                    }}
                   />
                   <label className="brandName" htmlFor={brand.value}>
                     {brand.value}
@@ -96,6 +121,17 @@ const Filter = () => {
                     name={price.start}
                     id={price.start}
                     value={price.start}
+                    onClick={(e) => {
+                      const obj = {
+                        start: price.start,
+                        end: price.end,
+                      };
+                      if (e.target.checked) {
+                        dispatch(addPriceValue(obj));
+                      } else {
+                        dispatch(removePriceValue(obj));
+                      }
+                    }}
                   />
                   <label className="priceName" htmlFor={price.start}>
                     Rs. {price.start} to Rs. {price.end}
@@ -113,9 +149,16 @@ const Filter = () => {
                 <div className="filterRow" key={idx}>
                   <input
                     name={color.value}
-                    id={color.id}
+                    id={color.value}
                     type="checkbox"
                     value={color.value}
+                    onClick={(e) => {
+                      if (e.target.checked) {
+                        dispatch(addColorValue(color.value));
+                      } else {
+                        dispatch(removeColorValue(color.value));
+                      }
+                    }}
                   />
                   <span
                     style={{
