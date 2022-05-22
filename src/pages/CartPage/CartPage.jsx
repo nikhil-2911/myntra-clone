@@ -81,125 +81,119 @@ const CartPage = () => {
       {sizeModal && <SizeModal product={product} setSizeModal={setSizeModal} />}
       <Navbar show={false} />
       <div id="cartSection">
-        <div id="cartDiv">
-          {cartProducts.length === 0 ? (
-            <h2>
-              Bag is empty{" "}
-              <a className="continueShopping" href="/">
+        {cartProducts.length === 0 ? (
+          <div id="vaccantBag">
+            <img
+              className="vaccantBagImage"
+              src="https://constant.myntassets.com/checkout/assets/img/empty-bag.webp"
+              alt="vaccantBag"
+            />
+            <p className="vaccantPara1">Hey,it feels so light!</p>
+            <p className="vaccantPara2">
+              There is nothing in your bag. Let's add some bag
+            </p>
+            <p className="vaccantPara3">
+              <a href="/" style={{ textDecoration: "none", color: "inherit" }}>
                 Continue Shopping :)
               </a>
-            </h2>
-          ) : (
-            <>
-              <div className="leftSideCart">
-                {cartProducts.map((product) => {
-                  return (
-                    <div className="cartCard">
-                      <div>
-                        <img
-                          onClick={(e) => handleClick(e, product)}
-                          className="cartCardImage"
-                          src={product.searchImage}
-                          alt="productImage"
-                        />
-                      </div>
-                      <div className="cartCardData">
-                        <p className="cartCardBrand">{product.brand}</p>
-                        <p className="cartCardName">
-                          {product.productName.substring(product.brand.length)}
-                        </p>
-                        <button
-                          onClick={(e) => handleSizeButton(e, product)}
-                          className="cartButton"
-                        >
-                          Size: {product.size}
-                          <img
-                            className="cartIcon"
-                            src={downIcon}
-                            alt="arrow"
-                          />
-                        </button>
-                        <button
-                          onClick={(e) => handleQuantityButton(e, product)}
-                          className="cartButton"
-                        >
-                          Qty: {product.qty}
-                          <img
-                            className="cartIcon"
-                            src={downIcon}
-                            alt="arrow"
-                          />
-                        </button>
-                        <br />
-                        <div className="cartPriceDetails">
-                          <span className="cartPrice">
-                            ₹ {product.price * product.qty}
-                          </span>
-                          <span className="cartMrp">
-                            <s>₹ {product.mrp * product.qty}</s>
-                          </span>
-                          <span className="cartDiscount">
-                            {product.discountDisplayLabel.substring(1, 3)} % OFF
-                          </span>
-                        </div>
-                      </div>
-                      <button
-                        onClick={(e) =>
-                          removeButtonHandler(
-                            e,
-                            product.productId,
-                            product.size
-                          )
-                        }
-                        className="removeButton"
-                      >
-                        X
-                      </button>
+            </p>
+          </div>
+        ) : (
+          <div id="cartDiv">
+            <div className="leftSideCart">
+              {cartProducts.map((product) => {
+                return (
+                  <div className="cartCard">
+                    <div>
+                      <img
+                        onClick={(e) => handleClick(e, product)}
+                        className="cartCardImage"
+                        src={product.searchImage}
+                        alt="productImage"
+                      />
                     </div>
-                  );
-                })}
-              </div>
-              <div className="rightSideCart">
-                <div id="cartPriceDetailsDiv">
-                  <div className="cartPriceRow">
-                    <span className="cartPriceItems">
-                      PRICE DETAILS: ({cartDetails.totalItems} items)
-                    </span>
+                    <div className="cartCardData">
+                      <p className="cartCardBrand">{product.brand}</p>
+                      <p className="cartCardName">
+                        {product.productName.substring(product.brand.length)}
+                      </p>
+                      <button
+                        onClick={(e) => handleSizeButton(e, product)}
+                        className="cartButton"
+                      >
+                        Size: {product.size}
+                        <img className="cartIcon" src={downIcon} alt="arrow" />
+                      </button>
+                      <button
+                        onClick={(e) => handleQuantityButton(e, product)}
+                        className="cartButton"
+                      >
+                        Qty: {product.qty}
+                        <img className="cartIcon" src={downIcon} alt="arrow" />
+                      </button>
+                      <br />
+                      <div className="cartPriceDetails">
+                        <span className="cartPrice">
+                          ₹ {product.price * product.qty}
+                        </span>
+                        <span className="cartMrp">
+                          <s>₹ {product.mrp * product.qty}</s>
+                        </span>
+                        <span className="cartDiscount">
+                          {product.discountDisplayLabel.substring(1, 3)} % OFF
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      onClick={(e) =>
+                        removeButtonHandler(e, product.productId, product.size)
+                      }
+                      className="removeButton"
+                    >
+                      X
+                    </button>
                   </div>
-                  <div className="cartPriceRow">
-                    <span className="cartPriceFirst">Total MRP : </span>
-                    <span className="cartPriceEnd">
-                      ₹ {cartDetails.totalMrp}
-                    </span>
-                  </div>
-                  <div className="cartPriceRow">
-                    <span className="cartPriceFirst">Total Discount : </span>
-                    <span style={{ color: "#03a685" }} className="cartPriceEnd">
-                      ₹ {cartDetails.totalDiscount}
-                    </span>
-                  </div>
-                  <div className="cartPriceRow">
-                    <span className="cartPriceFirst">Convienence Fee :</span>
-                    <span style={{ color: "#03a685" }} className="cartPriceEnd">
-                      <s style={{ color: "gray" }}>₹ 99</s> Free
-                    </span>
-                  </div>
+                );
+              })}
+            </div>
+            <div className="rightSideCart">
+              <div id="cartPriceDetailsDiv">
+                <div className="cartPriceRow">
+                  <span className="cartPriceItems">
+                    PRICE DETAILS: ({cartDetails.totalItems} items)
+                  </span>
                 </div>
-                <div id="cartPlaceOrder">
-                  <div className="cartPriceRow">
-                    <span style={{ fontSize: "16px", fontWeight: "bold" }}>
-                      Total Amount :{" "}
-                    </span>
-                    <span style={{ fontSize: "16px", fontWeight: "bold" }}>
-                      ₹ {cartDetails.totalAmount}
-                    </span>
-                  </div>
+                <div className="cartPriceRow">
+                  <span className="cartPriceFirst">Total MRP : </span>
+                  <span className="cartPriceEnd">₹ {cartDetails.totalMrp}</span>
                 </div>
-                <button className="placeButton">PLACE ORDER</button>
+                <div className="cartPriceRow">
+                  <span className="cartPriceFirst">Total Discount : </span>
+                  <span style={{ color: "#03a685" }} className="cartPriceEnd">
+                    ₹ {cartDetails.totalDiscount}
+                  </span>
+                </div>
+                <div className="cartPriceRow">
+                  <span className="cartPriceFirst">Convienence Fee :</span>
+                  <span style={{ color: "#03a685" }} className="cartPriceEnd">
+                    <s style={{ color: "gray" }}>₹ 99</s> Free
+                  </span>
+                </div>
               </div>
-            </>
-          )}
-        </div>
+              <div id="cartPlaceOrder">
+                <div className="cartPriceRow">
+                  <span style={{ fontSize: "16px", fontWeight: "bold" }}>
+                    Total Amount :{" "}
+                  </span>
+                  <span style={{ fontSize: "16px", fontWeight: "bold" }}>
+                    ₹ {cartDetails.totalAmount}
+                  </span>
+                </div>
+              </div>
+              <button className="placeButton">PLACE ORDER</button>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

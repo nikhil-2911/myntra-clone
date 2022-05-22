@@ -6,7 +6,8 @@ import { updateSize } from "../../store/cartSlice";
 const SizeModal = ({ setSizeModal, product }) => {
   const dispatch = useDispatch();
   const [numbers, setNumbers] = useState([]);
-  const [newSize, setNewSize] = useState(0);
+  const [height, setHeight] = useState("");
+  const [newSize, setNewSize] = useState(product.size);
   const handleDoneButton = (e) => {
     e.preventDefault();
     const obj = { newSize, product };
@@ -20,6 +21,11 @@ const SizeModal = ({ setSizeModal, product }) => {
     product.sizes.split(",").map((size) => {
       numberArr.push(size);
     });
+    if (numberArr.length > 5) {
+      setHeight("280px");
+    } else {
+      setHeight("200px");
+    }
     setNumbers(numberArr);
   }, []);
   return (
@@ -27,12 +33,12 @@ const SizeModal = ({ setSizeModal, product }) => {
       <div id="sizeDiv">
         <div className="qtyInnerDiv">
           <p className="qtyHead">Select Size</p>
-          <div className="qtyDiv">
+          <div style={{ height: { height } }} className="qtyDiv">
             {numbers.map((number) => {
               return (
                 <button
                   onClick={(e) => setNewSize(number)}
-                  className="qtyButton"
+                  className="sizeButton"
                 >
                   {number}
                 </button>
