@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Navbar.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 // Images
@@ -14,6 +14,7 @@ import { searchByInput, filterProducts } from "../../store/filterSlice";
 const Navbar = ({ show }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const state = useSelector((state) => state.cart.items);
   const [search, setSearch] = useState("");
   const onChangeHandler = (e) => {
     e.preventDefault();
@@ -86,8 +87,9 @@ const Navbar = ({ show }) => {
               <img className="featureSvg" src={HeartIcon} alt="#heartIcon" />
               <p className="featureText">Wishlist</p>
             </div>
-            <div className="featureDiv">
+            <div onClick={(e) => navigate("/cart")} className="featureBagDiv">
               <img className="featureSvg" src={BagIcon} alt="#bagIcon" />
+              {state.length > 0 && <p className="bagValue">{state.length}</p>}
               <p className="featureText">Bag</p>
             </div>
           </div>

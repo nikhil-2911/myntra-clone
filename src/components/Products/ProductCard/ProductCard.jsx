@@ -17,7 +17,7 @@ const ProductCard = ({ product }) => {
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(saveSelectedProduct(product));
-    navigate("product");
+    navigate("/product");
   };
   return (
     <div

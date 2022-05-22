@@ -1,7 +1,7 @@
 #navbar {
   display: flex;
   padding: 5px 18px;
-  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 8%);
+  box-shadow: 0 3px 8px 0 rgb(0 0 0 / 4%);
   z-index: 99;
   position: sticky;
   top: 0px;
@@ -68,13 +68,37 @@
 .featureDiv {
   margin: auto 10px;
   text-align: center;
+  cursor: pointer;
+}
+.featureBagDiv {
+  position: relative;
+  margin: auto 10px;
+  text-align: center;
+  cursor: pointer;
 }
 .featureSvg {
   width: 20px;
+}
+.bagValue {
+  position: absolute;
+  top: -22px;
+  right: -13px;
+  background-color: rgb(255, 63, 108);
+  color: white;
+  border-radius: 50%;
+  width: 23px;
+  height: 18px;
+  font-size: 14px;
+  font-weight: bold;
 }
 .featureText {
   font-size: 12px;
   font-weight: bold;
   opacity: 0.8;
   margin: 0px;
+}
+.bagShower {
+  position: fixed;
+  top: 10px;
+  right: 30px;
 }

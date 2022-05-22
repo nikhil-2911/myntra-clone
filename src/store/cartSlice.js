@@ -27,7 +27,7 @@ const cartSlice = createSlice({
       }
     },
     removeProduct: (state, action) => {
-      console.log(action.payload);
+      //   console.log(action.payload);
       state.items = state.items.filter((item) => {
         if (
           item.productId === action.payload.id &&
@@ -39,8 +39,34 @@ const cartSlice = createSlice({
         return true;
       });
     },
+    updateQuantity: (state, action) => {
+      state.items = state.items.map((item) => {
+        if (
+          (item.produtId === action.payload.product.productId,
+          item.size === action.payload.product.size)
+        ) {
+          //   console.log(item.qty, action.payload.newQty);
+          item.qty = action.payload.newQty;
+          return item;
+        }
+        return item;
+      });
+    },
+    updateSize: (state, action) => {
+      state.items = state.items.map((item) => {
+        if (
+          item.productId === action.payload.product.productId &&
+          item.size === action.payload.product.size
+        ) {
+          item.size = action.payload.newSize;
+          return item;
+        }
+        return item;
+      });
+    },
   },
 });
 
-export const { addProduct, removeProduct } = cartSlice.actions;
+export const { addProduct, removeProduct, updateQuantity, updateSize } =
+  cartSlice.actions;
 export default cartSlice.reducer;

@@ -7,12 +7,14 @@
 }
 .leftSideCart {
   width: 60%;
-  padding: 20px 12px;
+  padding: 30px 0px;
+  padding-right: 15px;
   border-right: 1px solid gainsboro;
 }
 .rightSideCart {
-  width: 40%;
-  padding: 20px 12px;
+  width: 30%;
+  padding: 30px 0px;
+  padding-left: 15px;
 }
 .cartCard {
   position: relative;
@@ -23,6 +25,7 @@
 }
 .cartCardImage {
   width: 120px;
+  cursor: pointer;
 }
 .cartCardData {
   padding: 4px 8px;
@@ -80,5 +83,50 @@
   background-color: white;
   border: none;
   outline: none;
+  cursor: pointer;
+}
+.continueShopping {
+  text-decoration: none;
+  color: inherit;
+  color: red;
+}
+#cartPriceDetailsDiv {
+  padding: 4px 8px;
+  border-bottom: 1px solid gainsboro;
+}
+#cartPlaceOrder {
+  margin-top: 25px;
+  padding: 4px 8px;
+}
+.allPriceDetails {
+  font-size: 15px;
+  font-weight: bold;
+}
+.cartPriceRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.cartPriceItems {
+  font-size: 15px;
+  font-weight: bold;
+}
+.cartPriceFirst {
+  font-size: 15px;
+  color: gray;
+}
+.cartPriceEnd {
+  font-size: 15px;
+  font-weight: 400;
+}
+.placeButton {
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  padding: 12px;
+  color: white;
+  background-color: rgb(255, 63, 108);
   cursor: pointer;
 }

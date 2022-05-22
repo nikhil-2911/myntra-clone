@@ -1,0 +1,45 @@
+#sizeDiv {
+  width: 340px;
+  height: 250px;
+}
+.qtyInnerDiv {
+  padding: 16px;
+}
+.qtyHead {
+  font-size: 16px;
+  font-weight: 450;
+  margin-left: 15px;
+}
+.qtyDiv {
+  display: flex;
+  flex-wrap: wrap;
+}
+.qtyButton {
+  width: 45px;
+  border-radius: 50%;
+  font-size: 15px;
+  font-weight: bold;
+  border: 1px solid gray;
+  outline: none;
+  background-color: white;
+  margin: 8px;
+  padding: 14px;
+  cursor: pointer;
+}
+.qtyButton:hover,
+.qtyButton:focus {
+  border: 1px solid #ff3e6c;
+  color: #ff3e6c;
+}
+.qtyDoneBtn {
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  padding: 12px;
+  color: white;
+  background-color: rgb(255, 63, 108);
+  cursor: pointer;
+  margin-top: 15px;
+}
