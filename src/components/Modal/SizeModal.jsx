@@ -23,21 +23,26 @@ const SizeModal = ({ setSizeModal, product }) => {
     setNumbers(numberArr);
   }, []);
   return (
-    <div id="sizeDiv">
-      <div className="qtyInnerDiv">
-        <p className="qtyHead">Select Size</p>
-        <div className="qtyDiv">
-          {numbers.map((number) => {
-            return (
-              <button onClick={(e) => setNewSize(number)} className="qtyButton">
-                {number}
-              </button>
-            );
-          })}
+    <div className="wrapper">
+      <div id="sizeDiv">
+        <div className="qtyInnerDiv">
+          <p className="qtyHead">Select Size</p>
+          <div className="qtyDiv">
+            {numbers.map((number) => {
+              return (
+                <button
+                  onClick={(e) => setNewSize(number)}
+                  className="qtyButton"
+                >
+                  {number}
+                </button>
+              );
+            })}
+          </div>
+          <button onClick={(e) => handleDoneButton(e)} className="qtyDoneBtn">
+            DONE
+          </button>
         </div>
-        <button onClick={(e) => handleDoneButton(e)} className="qtyDoneBtn">
-          DONE
-        </button>
       </div>
     </div>
   );

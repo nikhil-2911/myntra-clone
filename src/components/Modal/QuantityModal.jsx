@@ -16,21 +16,26 @@ const QuantityModal = ({ setQtyModal, product }) => {
     setQtyModal(false);
   };
   return (
-    <div id="quantityDiv">
-      <div className="qtyInnerDiv">
-        <p className="qtyHead">Select Quantity</p>
-        <div className="qtyDiv">
-          {numbers.map((number) => {
-            return (
-              <button onClick={(e) => setNewQty(number)} className="qtyButton">
-                {number}
-              </button>
-            );
-          })}
+    <div className="wrapper">
+      <div id="quantityDiv">
+        <div className="qtyInnerDiv">
+          <p className="qtyHead">Select Quantity</p>
+          <div className="qtyDiv">
+            {numbers.map((number) => {
+              return (
+                <button
+                  onClick={(e) => setNewQty(number)}
+                  className="qtyButton"
+                >
+                  {number}
+                </button>
+              );
+            })}
+          </div>
+          <button onClick={(e) => handleDoneButton(e)} className="qtyDoneBtn">
+            DONE
+          </button>
         </div>
-        <button onClick={(e) => handleDoneButton(e)} className="qtyDoneBtn">
-          DONE
-        </button>
       </div>
     </div>
   );

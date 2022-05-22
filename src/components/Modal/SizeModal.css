@@ -1,6 +1,7 @@
 #sizeDiv {
-  width: 340px;
-  height: 250px;
+  width: 380px;
+  height: 200px;
+  background-color: white;
 }
 .qtyInnerDiv {
   padding: 16px;

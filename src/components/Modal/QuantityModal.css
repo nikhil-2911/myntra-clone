@@ -1,6 +1,18 @@
+.wrapper {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 100vh;
+  background-color: #0000007a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
 #quantityDiv {
-  width: 340px;
-  height: 250px;
+  width: 350px;
+  height: 270px;
+  background-color: white;
 }
 .qtyInnerDiv {
   padding: 16px;
