@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { saveSelectedProduct } from "../../../store/filterSlice";
 import { addProduct } from "../../../store/wishlistSlice";
 
@@ -12,7 +12,8 @@ import RedHeartIcon from "../../../utils/images/heart-icon-filled.svg";
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [image, setImage] = useState(false);
+  const state = useSelector((state) => state.wishlist.items);
+  const [wishlist, setWishlist] = useState(false);
   const [showWishlist, setShowWishlist] = useState(false);
   // console.log(product);
   const handleClick = (e) => {
@@ -22,9 +23,20 @@ const ProductCard = ({ product }) => {
   };
   const handleWishlistClick = (e) => {
     e.preventDefault();
-    setImage(true);
+    setWishlist(true);
     dispatch(addProduct(product));
   };
+
+  useEffect(() => {
+    if (state.length !== 0) {
+      state.map((item) => {
+        if (item.productId === product.productId) {
+          setWishlist(true);
+        }
+      });
+    }
+  }, []);
+
   return (
     <div
       id="productCard"
@@ -43,11 +55,11 @@ const ProductCard = ({ product }) => {
             <div onClick={(e) => handleWishlistClick(e)} className="wishlist">
               <img
                 className="heartIcon"
-                src={image === true ? RedHeartIcon : HeartIcon}
+                src={wishlist === true ? RedHeartIcon : HeartIcon}
                 alt="#icon"
               />
               <p className="wishlistText">
-                {image === true ? "WISHLISTED" : "WISHLIST"}
+                {wishlist === true ? "WISHLISTED" : "WISHLIST"}
               </p>
             </div>
             <p className="sizesRow">

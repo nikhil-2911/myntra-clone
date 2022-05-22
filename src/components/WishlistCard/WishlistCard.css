@@ -1,7 +1,8 @@
 #wishlistCard {
   width: 210px;
   position: relative;
-  margin: 25px 35px;
+  margin: 25px 0px;
+  margin-left: 80px;
 }
 #wishlistCard:hover {
   box-shadow: 0 4px 18px 6px rgb(39 43 57 / 8%);

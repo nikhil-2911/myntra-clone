@@ -32,8 +32,15 @@ const WishlistPage = () => {
       ) : (
         <div id="wishlistSection">
           <p className="wishlistHead">
-            My Wishlist:{"  "}
-            <span style={{ fontSize: "16px", fontWeight: "400" }}>
+            My Wishlist:
+            <span
+              style={{
+                marginLeft: "8px",
+                fontSize: "18px",
+                fontWeight: "380",
+                color: "#ff3e6c",
+              }}
+            >
               {products.length} items
             </span>
           </p>

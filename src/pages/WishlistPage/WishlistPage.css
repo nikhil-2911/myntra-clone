@@ -6,10 +6,11 @@
   flex-wrap: wrap;
 }
 .wishlistHead {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 500;
-  margin-left: 70px;
+  margin-left: 80px;
   margin-top: 30px;
+  margin-bottom: 0px;
 }
 #vaccantBag {
   display: flex;

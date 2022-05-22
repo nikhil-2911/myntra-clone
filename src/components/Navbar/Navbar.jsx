@@ -75,33 +75,26 @@ const Navbar = ({ show }) => {
               onChange={(e) => onChangeHandler(e)}
             />
           </div>
-          <div id="features">
-            <div className="featureDiv">
-              <img
-                className="featureSvg"
-                src={ProfileIcon}
-                alt="#profileIcon"
-              />
-              <p className="featureText">Profile</p>
-            </div>
-            <div
-              onClick={(e) => navigate("/wishlist")}
-              className="featureBagDiv"
-            >
-              <img className="featureSvg" src={HeartIcon} alt="#heartIcon" />
-              {wishlistState.length > 0 && (
-                <p className="bagValue">{wishlistState.length}</p>
-              )}
-              <p className="featureText">Wishlist</p>
-            </div>
-            <div onClick={(e) => navigate("/cart")} className="featureBagDiv">
-              <img className="featureSvg" src={BagIcon} alt="#bagIcon" />
-              {state.length > 0 && <p className="bagValue">{state.length}</p>}
-              <p className="featureText">Bag</p>
-            </div>
-          </div>
         </>
       )}
+      <div id="features">
+        <div className="featureDiv">
+          <img className="featureSvg" src={ProfileIcon} alt="#profileIcon" />
+          <p className="featureText">Profile</p>
+        </div>
+        <div onClick={(e) => navigate("/wishlist")} className="featureBagDiv">
+          <img className="featureSvg" src={HeartIcon} alt="#heartIcon" />
+          {wishlistState.length > 0 && (
+            <p className="bagValue">{wishlistState.length}</p>
+          )}
+          <p className="featureText">Wishlist</p>
+        </div>
+        <div onClick={(e) => navigate("/cart")} className="featureBagDiv">
+          <img className="featureSvg" src={BagIcon} alt="#bagIcon" />
+          {state.length > 0 && <p className="bagValue">{state.length}</p>}
+          <p className="featureText">Bag</p>
+        </div>
+      </div>
     </nav>
   );
 };

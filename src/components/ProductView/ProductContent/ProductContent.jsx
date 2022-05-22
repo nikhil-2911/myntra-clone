@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./ProductContent.css";
 import { toast } from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../../store/cartSlice";
+import { addProduct as addWishlist } from "../../../store/wishlistSlice";
 import { useNavigate } from "react-router-dom";
 
 // images
@@ -12,7 +13,9 @@ import checkoutIcon from "../../../utils/images/checkout-arrow.png";
 const ProductContent = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const state = useSelector((state) => state.wishlist.items);
   const [size, setSize] = useState("");
+  const [wishlisted, setWishlisted] = useState(false);
   const [valid, setValid] = useState(true);
   const [show, setShow] = useState(false);
   const handleBagClick = (e) => {
@@ -34,6 +37,20 @@ const ProductContent = ({ product }) => {
     e.preventDefault();
     navigate("/cart");
   };
+  const handleWishlistClick = (e) => {
+    e.preventDefault();
+    dispatch(addWishlist(product));
+    setWishlisted(true);
+  };
+  useEffect(() => {
+    if (state.length !== 0) {
+      state.map((item) => {
+        if (item.productId === product.productId) {
+          setWishlisted(true);
+        }
+      });
+    }
+  }, []);
   return (
     <div id="product-content">
       <div id="productHeading">
@@ -86,6 +103,16 @@ const ProductContent = ({ product }) => {
             </>
           )}
         </button>
+        {wishlisted ? (
+          <button className="wishlist-button2">WISHLISTED</button>
+        ) : (
+          <button
+            onClick={(e) => handleWishlistClick(e)}
+            className="wishlist-button"
+          >
+            WISHLIST
+          </button>
+        )}
       </div>
       <div id="orderDetais">
         <p className="order-details-head">ORDER DETAILS</p>

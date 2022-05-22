@@ -93,6 +93,32 @@
   width: 300px;
   border-radius: 4px;
 }
+.wishlist-button {
+  font-size: 16px;
+  font-weight: 400;
+  background-color: white;
+  color: #ff3e6c;
+  border: 1px solid #ff3e6c;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  width: 200px;
+  border-radius: 4px;
+  margin-left: 15px;
+}
+.wishlist-button2 {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #ff3e6c;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  width: 200px;
+  border-radius: 4px;
+  margin-left: 15px;
+}
 .order-details {
   font-size: 15px;
   margin: 8px 0px;
