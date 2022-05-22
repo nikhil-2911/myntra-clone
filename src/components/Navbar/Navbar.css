@@ -14,13 +14,23 @@
   width: 65%;
   margin-top: 10px;
   margin-left: 20px;
+  cursor: pointer;
 }
 #tabs {
   display: flex;
   margin-left: 30px;
 }
 .tab {
+  height: 100%;
+  display: flex;
   margin: auto 15px;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.tab:hover {
+  border-bottom: 2px solid red;
 }
 .tag {
   font-size: 15px;

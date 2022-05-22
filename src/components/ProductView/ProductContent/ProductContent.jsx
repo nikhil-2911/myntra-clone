@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import "./ProductContent.css";
+import { toast } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../../store/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 // images
 import bagIcon from "../../../utils/images/add-cart.png";
 import checkoutIcon from "../../../utils/images/checkout-arrow.png";
 
 const ProductContent = ({ product }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [size, setSize] = useState("");
   const [valid, setValid] = useState(true);
   const [show, setShow] = useState(false);
@@ -16,7 +22,17 @@ const ProductContent = ({ product }) => {
     } else {
       setValid(true);
       setShow(true);
+      const obj = { ...product, qty: 1, size: size };
+      dispatch(addProduct(obj));
+      // console.log(obj);
+      toast.success("Added To Bag", {
+        position: "top-right",
+      });
     }
+  };
+  const handleCheckoutClick = (e) => {
+    e.preventDefault();
+    navigate("/cart");
   };
   return (
     <div id="product-content">
@@ -52,7 +68,12 @@ const ProductContent = ({ product }) => {
         </div>
       </div>
       <div id="tagDiv">
-        <button onClick={(e) => handleBagClick(e)} className="bag-button">
+        <button
+          onClick={(e) => {
+            show ? handleCheckoutClick(e) : handleBagClick(e);
+          }}
+          className="bag-button"
+        >
           {show ? (
             <>
               <img className="bag-icon" src={checkoutIcon} alt="bag" />
