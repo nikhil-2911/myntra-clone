@@ -15,6 +15,7 @@ const Navbar = ({ show }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.cart.items);
+  const wishlistState = useSelector((state) => state.wishlist.items);
   const [search, setSearch] = useState("");
   const onChangeHandler = (e) => {
     e.preventDefault();
@@ -83,8 +84,14 @@ const Navbar = ({ show }) => {
               />
               <p className="featureText">Profile</p>
             </div>
-            <div className="featureDiv">
+            <div
+              onClick={(e) => navigate("/wishlist")}
+              className="featureBagDiv"
+            >
               <img className="featureSvg" src={HeartIcon} alt="#heartIcon" />
+              {wishlistState.length > 0 && (
+                <p className="bagValue">{wishlistState.length}</p>
+              )}
               <p className="featureText">Wishlist</p>
             </div>
             <div onClick={(e) => navigate("/cart")} className="featureBagDiv">

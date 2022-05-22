@@ -1,20 +1,38 @@
 import React, { useEffect, useState } from "react";
 import "./SizeModal.css";
+import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { updateSize } from "../../store/cartSlice";
+import { addProduct, updateSize } from "../../store/cartSlice";
+import { removeProduct } from "../../store/wishlistSlice";
 
-const SizeModal = ({ setSizeModal, product }) => {
+const SizeModal = ({ setSizeModal, product, setShowModal, wishlist }) => {
   const dispatch = useDispatch();
   const [numbers, setNumbers] = useState([]);
   const [height, setHeight] = useState("");
   const [newSize, setNewSize] = useState(product.size);
   const handleDoneButton = (e) => {
     e.preventDefault();
-    const obj = { newSize, product };
-    if (newSize !== product.size) {
-      dispatch(updateSize(obj));
+    if (wishlist) {
+      if (newSize) {
+        const obj = { ...product, size: newSize, qty: 1 };
+        dispatch(addProduct(obj));
+        dispatch(removeProduct(obj));
+        setShowModal(false);
+        toast.success("Product moved to wishlist successfully", {
+          position: "top-right",
+        });
+      } else {
+        toast.error("Please, select one size", {
+          position: "top-center",
+        });
+      }
+    } else {
+      const obj = { newSize, product };
+      if (newSize !== product.size) {
+        dispatch(updateSize(obj));
+      }
+      setSizeModal(false);
     }
-    setSizeModal(false);
   };
   useEffect(() => {
     let numberArr = [];

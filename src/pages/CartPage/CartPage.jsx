@@ -94,7 +94,7 @@ const CartPage = () => {
             </p>
             <p className="vaccantPara3">
               <a href="/" style={{ textDecoration: "none", color: "inherit" }}>
-                Continue Shopping :)
+                CONTINUE SHOPPING
               </a>
             </p>
           </div>

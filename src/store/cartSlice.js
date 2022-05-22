@@ -42,10 +42,10 @@ const cartSlice = createSlice({
     updateQuantity: (state, action) => {
       state.items = state.items.map((item) => {
         if (
-          (item.produtId === action.payload.product.productId,
-          item.size === action.payload.product.size)
+          item.productId === action.payload.product.productId &&
+          item.size === action.payload.product.size
         ) {
-          //   console.log(item.qty, action.payload.newQty);
+          // console.log(item.qty, action.payload.newQty);
           item.qty = action.payload.newQty;
           return item;
         }

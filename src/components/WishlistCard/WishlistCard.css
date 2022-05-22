@@ -1,0 +1,67 @@
+#wishlistCard {
+  width: 210px;
+  position: relative;
+  margin: 25px 35px;
+}
+#wishlistCard:hover {
+  box-shadow: 0 4px 18px 6px rgb(39 43 57 / 8%);
+  cursor: pointer;
+}
+.cross {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: grey;
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  padding: 5px 8px;
+  z-index: 9;
+}
+.profilePhoto {
+  width: 210px;
+}
+#productDetails {
+  padding: 2px 6px;
+}
+.brandText {
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 4px;
+  margin-bottom: 0px;
+}
+.infoText {
+  font-size: 14px;
+  font-weight: 280;
+  margin-top: 5px;
+  margin-bottom: 6px;
+}
+.productPrice {
+  font-size: 15px;
+  font-weight: 500;
+}
+.productMrp {
+  font-size: 13px;
+  font-weight: 280;
+  margin-left: 5px;
+}
+.productDiscount {
+  color: #ff905a;
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 8px;
+}
+.moveBagButton {
+  font-size: 14px;
+  font-weight: 550;
+  color: #ff3e6c;
+  background-color: white;
+  width: 100%;
+  border: 1px solid gainsboro;
+  cursor: pointer;
+  outline: none;
+  padding: 10px 12px;
+  margin-top: 15px;
+}

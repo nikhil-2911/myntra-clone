@@ -31,32 +31,6 @@ const filterSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
-    sortByDiscount: (state, action) => {
-      let products = state.products;
-      state.products = products.sort(
-        (a, b) =>
-          parseInt(b.discountDisplayLabel.substring(1, 3)) -
-          parseInt(a.discountDisplayLabel.substring(1, 3))
-      );
-    },
-    sortByIncreasingOrder: (state, action) => {
-      let products = state.products;
-      state.products = products.sort((a, b) => a.price - b.price);
-    },
-    sortByDecreasingOrder: (state, action) => {
-      let products = state.products;
-      state.products = products.sort((a, b) => b.price - a.price);
-    },
-    sortByCustomerRating: (state, action) => {
-      let products = state.products;
-      state.products = products.sort((a, b) => b.rating - a.rating);
-    },
-    clearFilters: (state, action) => {
-      state.filterQuery.brand = [];
-      state.filterQuery.price = [];
-      state.filterQuery.color = [];
-      state.filterQuery.sort = [];
-    },
     addFilters: (state, action) => {
       const lower =
         state.filterQuery.price.length === 0
@@ -208,6 +182,32 @@ const filterSlice = createSlice({
     saveSelectedProduct: (state, action) => {
       const product = action.payload;
       state.selectedProduct = product;
+    },
+    sortByDiscount: (state, action) => {
+      let products = state.products;
+      state.products = products.sort(
+        (a, b) =>
+          parseInt(b.discountDisplayLabel.substring(1, 3)) -
+          parseInt(a.discountDisplayLabel.substring(1, 3))
+      );
+    },
+    sortByIncreasingOrder: (state, action) => {
+      let products = state.products;
+      state.products = products.sort((a, b) => a.price - b.price);
+    },
+    sortByDecreasingOrder: (state, action) => {
+      let products = state.products;
+      state.products = products.sort((a, b) => b.price - a.price);
+    },
+    sortByCustomerRating: (state, action) => {
+      let products = state.products;
+      state.products = products.sort((a, b) => b.rating - a.rating);
+    },
+    clearFilters: (state, action) => {
+      state.filterQuery.brand = [];
+      state.filterQuery.price = [];
+      state.filterQuery.color = [];
+      state.filterQuery.sort = [];
     },
   },
 });

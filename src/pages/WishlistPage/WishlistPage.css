@@ -1,0 +1,43 @@
+#wishlistSection {
+  width: 100%;
+}
+#wishlistDiv {
+  display: flex;
+  flex-wrap: wrap;
+}
+.wishlistHead {
+  font-size: 17px;
+  font-weight: 500;
+  margin-left: 70px;
+  margin-top: 30px;
+}
+#vaccantBag {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 70vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.vaccantBagImage {
+  width: 150px;
+}
+.vaccantPara1 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.vaccantPara2 {
+  font-size: 15px;
+  font-weight: 300;
+  color: gray;
+  margin-top: 0px;
+}
+.vaccantPara3 {
+  font-size: 18px;
+  color: #ff3e6c;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0px;
+}

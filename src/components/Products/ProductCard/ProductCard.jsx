@@ -3,6 +3,7 @@ import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { saveSelectedProduct } from "../../../store/filterSlice";
+import { addProduct } from "../../../store/wishlistSlice";
 
 // images
 import HeartIcon from "../../../utils/images/heart-icon.svg";
@@ -19,6 +20,11 @@ const ProductCard = ({ product }) => {
     dispatch(saveSelectedProduct(product));
     navigate("/product");
   };
+  const handleWishlistClick = (e) => {
+    e.preventDefault();
+    setImage(true);
+    dispatch(addProduct(product));
+  };
   return (
     <div
       id="productCard"
@@ -34,13 +40,15 @@ const ProductCard = ({ product }) => {
       <div id="productDetails">
         {showWishlist ? (
           <div id="productHover">
-            <div onClick={() => setImage(!image)} className="wishlist">
+            <div onClick={(e) => handleWishlistClick(e)} className="wishlist">
               <img
                 className="heartIcon"
-                src={image ? RedHeartIcon : HeartIcon}
+                src={image === true ? RedHeartIcon : HeartIcon}
                 alt="#icon"
               />
-              <p className="wishlistText">WISHLIST</p>
+              <p className="wishlistText">
+                {image === true ? "WISHLISTED" : "WISHLIST"}
+              </p>
             </div>
             <p className="sizesRow">
               Size -
