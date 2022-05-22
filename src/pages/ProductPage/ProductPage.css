@@ -1,0 +1,17 @@
+#mainDiv {
+  display: flex;
+  margin-top: 20px;
+  justify-content: flex-start;
+}
+.headText {
+  font-size: 14px;
+}
+.spanText {
+  font-size: 14px;
+  font-weight: bold;
+}
+.resultText {
+  color: rgb(162, 155, 155);
+  font-weight: 300;
+  font-size: 16px;
+}

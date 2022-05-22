@@ -24,6 +24,7 @@ const initialState = {
   },
   men: true,
   women: false,
+  selectedProduct: {},
 };
 
 const filterSlice = createSlice({
@@ -204,6 +205,10 @@ const filterSlice = createSlice({
         state.products = resultProducts;
       }
     },
+    saveSelectedProduct: (state, action) => {
+      const product = action.payload;
+      state.selectedProduct = product;
+    },
   },
 });
 export const {
@@ -222,5 +227,6 @@ export const {
   sortByDecreasingOrder,
   sortByIncreasingOrder,
   searchByInput,
+  saveSelectedProduct,
 } = filterSlice.actions;
 export default filterSlice.reducer;

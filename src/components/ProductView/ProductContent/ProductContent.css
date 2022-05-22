@@ -1,0 +1,102 @@
+#productContent {
+  width: 40%;
+}
+#productHeading {
+  width: 100%;
+  border-bottom: 2px solid gainsboro;
+}
+.brand-name {
+  font-size: 21px;
+  font-weight: 500;
+  margin-bottom: 0px;
+}
+.additional-info {
+  font-size: 21px;
+  font-weight: 300;
+  color: gray;
+  margin-top: 5px;
+}
+#productRates {
+  margin-top: 15px;
+}
+.product-price {
+  font-size: 22px;
+  font-weight: 500;
+}
+.product-mrp {
+  font-size: 22px;
+  font-weight: 340;
+  margin-left: 12px;
+  color: gray;
+}
+.product-discount {
+  color: #ff905a;
+  font-size: 22px;
+  margin-left: 16px;
+}
+.product-tax {
+  color: #03a685;
+  font-weight: 500;
+  font-size: 13px;
+  display: block;
+  margin: 10px 10px 0 0;
+}
+#productSizes,
+#orderDetails {
+  margin-top: 30px;
+}
+.select-size,
+.order-details-head {
+  font-size: 17px;
+  font-weight: 500;
+}
+#size-div {
+  display: flex;
+}
+.size-button {
+  border-radius: 50%;
+  font-size: 15px;
+  font-weight: 400;
+  border: 1px solid gray;
+  outline: none;
+  background-color: white;
+  margin-right: 10px;
+  padding: 14px;
+  cursor: pointer;
+}
+.size-button:hover,
+.size-button:focus {
+  border: 1px solid #ff3e6c;
+  color: #ff3e6c;
+}
+#tagDiv {
+  margin-top: 30px;
+}
+.bag-icon {
+  position: relative;
+  top: 2px;
+  width: 16px;
+  margin-right: 10px;
+  color: white;
+}
+.bag-button {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #ff3e6c;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 15px;
+  width: 320px;
+}
+.order-details {
+  font-size: 15px;
+  margin: 8px 0px;
+  font-weight: 300;
+}
+.show-error {
+  font-size: 14px;
+  font-weight: 300;
+  color: #ff3e6c;
+}
