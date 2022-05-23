@@ -12,6 +12,7 @@ import RedHeartIcon from "../../../utils/images/heart-icon-filled.svg";
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const products = useSelector((state) => state.product.products);
   const state = useSelector((state) => state.wishlist.items);
   const [wishlist, setWishlist] = useState(false);
   const [showWishlist, setShowWishlist] = useState(false);
@@ -23,11 +24,13 @@ const ProductCard = ({ product }) => {
   };
   const handleWishlistClick = (e) => {
     e.preventDefault();
-    setWishlist(true);
-    dispatch(addProduct(product));
+    if (!wishlist) {
+      setWishlist(true);
+      dispatch(addProduct(product));
+    }
   };
-
   useEffect(() => {
+    setWishlist(false);
     if (state.length !== 0) {
       state.map((item) => {
         if (item.productId === product.productId) {
@@ -35,7 +38,7 @@ const ProductCard = ({ product }) => {
         }
       });
     }
-  }, []);
+  }, [products]);
 
   return (
     <div
@@ -51,15 +54,15 @@ const ProductCard = ({ product }) => {
       />
       <div id="productDetails">
         {showWishlist ? (
-          <div id="productHover">
-            <div onClick={(e) => handleWishlistClick(e)} className="wishlist">
+          <div onClick={(e) => handleWishlistClick(e)} id="productHover">
+            <div className="wishlist">
               <img
                 className="heartIcon"
-                src={wishlist === true ? RedHeartIcon : HeartIcon}
+                src={wishlist ? RedHeartIcon : HeartIcon}
                 alt="#icon"
               />
               <p className="wishlistText">
-                {wishlist === true ? "WISHLISTED" : "WISHLIST"}
+                {wishlist ? "WISHLISTED" : "WISHLIST"}
               </p>
             </div>
             <p className="sizesRow">
